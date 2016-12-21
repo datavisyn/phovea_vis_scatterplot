@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "phovea_core": "github:phovea/phovea_core",
-    "datavisyn-scatterplot": "github:/datavisyn/datavisyn-scatterplot"
+    "datavisyn-scatterplot": "github:datavisyn/datavisyn-scatterplot"
   },
   "name": "phovea_vis_scatterplot",
   "description": "phovea datavisyn-scatterplot binding",

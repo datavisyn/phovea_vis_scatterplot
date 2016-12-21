@@ -5,10 +5,19 @@
  **************************************************************************** */
 
 //register all extensions in the registry following the given pattern
-module.exports = function(registry) {
+module.exports = function (registry) {
   //registry.push('extension-type', 'extension-id', function() { return System.import('./src/extension_impl'); }, {});
   // generator-phovea:begin
 
+  registry.push('vis', 'canvas-scatterplot', function () {
+    return System.import('./src/index');
+  }, {
+    name: 'ScatterPlot',
+    filter: 'matrix',
+    icon: function () {
+      return System.import('./src/assets/icon.svg');
+    },
+  });
   // generator-phovea:end
 };
 
