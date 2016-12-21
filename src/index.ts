@@ -74,7 +74,7 @@ export default class ScatterPlot extends AVisInstance implements IVisInstance {
     const selection = this.impl.selection;
     const indices = selection.map((s) => this.loaded.indexOf(s));
     // select whole row
-    this.data.select(new Range([Range1D.from(indices)]));
+    this.data.select(new Range([Range1D.from(indices), Range1D.from([this.options.xcol, this.options.ycol])]));
   }
 
   private onDataSelectionChanged(event: any, selected: Range) {
