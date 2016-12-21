@@ -13,7 +13,10 @@ module.exports = function (registry) {
     return System.import('./src/index');
   }, {
     name: 'ScatterPlot',
-    filter: 'matrix',
+    filter: [ //just matrixes with real or int = number
+      'matrix',
+      '(real|int)'
+    ],
     icon: function () {
       return System.import('./src/assets/icon.svg');
     },
