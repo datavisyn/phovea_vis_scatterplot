@@ -31,7 +31,7 @@ function toRange(...cols: number[]) {
   return new Range([Range1D.all(), Range1D.from(cols)]);
 }
 
-export class ScatterPlot extends AVisInstance implements IVisInstance {
+export default class ScatterPlot extends AVisInstance implements IVisInstance {
   private options: IScatterPlotOptions = {
     scale: [1, 1],
     rotate: 0,
@@ -91,6 +91,7 @@ export class ScatterPlot extends AVisInstance implements IVisInstance {
     const width = size[0], height = size[1];
 
     const node = parent.ownerDocument.createElement('div');
+    parent.appendChild(node);
     node.classList.add('phovea-vis-scatterplot');
     node.style.width = width+'px';
     node.style.height = height+'px';
@@ -103,6 +104,8 @@ export class ScatterPlot extends AVisInstance implements IVisInstance {
       data.selections().then((selected: Range) => {
         this.onDataSelectionChanged(null, selected);
       });
+
+      this.impl.render();
 
       this.markReady();
     });
@@ -117,6 +120,6 @@ export class ScatterPlot extends AVisInstance implements IVisInstance {
   }
 }
 
-export function create(data: IMatrix, parent: Element, options) {
+export function create(data: IMatrix, parent: Element, options: IScatterPlotOptions = {}) {
   return new ScatterPlot(data, parent, options);
 }
