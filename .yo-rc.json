@@ -1,0 +1,22 @@
+{
+  "generator-phovea": {
+    "type": "lib",
+    "libraries": [
+      "datavisyn-scatterplot"
+    ],
+    "libraryAliases": {},
+    "libraryExternals": [
+      "datavisyn-scatterplot"
+    ],
+    "modules": [
+      "phovea_core"
+    ],
+    "entries": "./index.js",
+    "ignores": [],
+    "extensions": [],
+    "name": "phovea_vis_scatterplot",
+    "author": "Samuel Gratzl",
+    "today": "Wed, 21 Dec 2016 21:26:19 GMT",
+    "githubAccount": "datavisyn"
+  }
+}
