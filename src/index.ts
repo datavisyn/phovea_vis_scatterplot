@@ -3,7 +3,7 @@
  */
 
 import Impl, {IScatterplotOptions as ImplOptions, scale} from 'datavisyn-scatterplot/src';
-import {AVisInstance, IVisInstance, assignVis} from 'phovea_core/src/vis';
+import {AVisInstance, IVisInstance, assignVis, IVisInstanceOptions} from 'phovea_core/src/vis';
 import {mixin, onDOMNodeRemoved} from 'phovea_core/src';
 import {IMatrix} from 'phovea_core/src/matrix';
 import {Range, Range1D} from 'phovea_core/src/range';
@@ -12,10 +12,7 @@ import {Range, Range1D} from 'phovea_core/src/range';
 export declare type NumberImplOptions = ImplOptions<[number, number]>;
 declare type NumberImpl = Impl<[number, number]>;
 
-export interface IScatterPlotOptions {
-  scale?: [number, number];
-  rotate?: number;
-
+export interface IScatterPlotOptions extends IVisInstanceOptions {
   xcol?: number;
   ycol?: number;
 
@@ -49,7 +46,7 @@ export default class ScatterPlot extends AVisInstance implements IVisInstance {
     mixin(this.options, options);
 
     this.node = this.build(parent, options.impl);
-    assignVis(<Element>this.node, this);
+    assignVis(this.node, this);
   }
 
   get rawSize(): [number, number] {
