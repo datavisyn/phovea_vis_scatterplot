@@ -5,7 +5,7 @@
 import Impl, {IScatterplotOptions as ImplOptions, scale} from 'datavisyn-scatterplot/src';
 import {AVisInstance, IVisInstance, assignVis, IVisInstanceOptions} from 'phovea_core/src/vis';
 import {mixin, onDOMNodeRemoved} from 'phovea_core/src';
-import {IMatrix} from 'phovea_core/src/matrix';
+import {INumericalMatrix} from 'phovea_core/src/matrix';
 import {Range, Range1D} from 'phovea_core/src/range';
 
 
@@ -17,11 +17,6 @@ export interface IScatterPlotOptions extends IVisInstanceOptions {
   ycol?: number;
 
   impl?: NumberImplOptions;
-}
-
-interface INumberValue {
-  type: string; //real, int
-  range: [number, number];
 }
 
 function toRange(...cols: number[]) {
@@ -41,7 +36,7 @@ export default class ScatterPlot extends AVisInstance implements IVisInstance {
   private loaded: [number, number][];
 
 
-  constructor(public readonly data: IMatrix, parent: Element, options: IScatterPlotOptions = {}) {
+  constructor(public readonly data: INumericalMatrix, parent: Element, options: IScatterPlotOptions = {}) {
     super();
     mixin(this.options, options);
 
@@ -54,7 +49,7 @@ export default class ScatterPlot extends AVisInstance implements IVisInstance {
   }
 
   private createImplOptions(options: NumberImplOptions, cols: string[]) {
-    const value = <INumberValue>this.data.valuetype;
+    const value = this.data.valuetype;
     const base: NumberImplOptions = {
       x: (row) => row[0],
       xlabel: cols[0],
@@ -118,6 +113,6 @@ export default class ScatterPlot extends AVisInstance implements IVisInstance {
   }
 }
 
-export function create(data: IMatrix, parent: Element, options: IScatterPlotOptions = {}) {
+export function create(data: INumericalMatrix, parent: Element, options: IScatterPlotOptions = {}) {
   return new ScatterPlot(data, parent, options);
 }
