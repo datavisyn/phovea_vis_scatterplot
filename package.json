@@ -1,4 +1,21 @@
 {
+  "name": "phovea_vis_scatterplot",
+  "description": "phovea datavisyn-scatterplot binding",
+  "homepage": "https://phovea.caleydo.org",
+  "version": "0.1.0-SNAPSHOT",
+  "author": {
+    "name": "Samuel Gratzl",
+    "email": "samuel_gratzl@gmx.at",
+    "url": ""
+  },
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/datavisyn/phovea_vis_scatterplot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datavisyn/phovea_vis_scatterplot.git"
+  },
   "main": "build/phovea_vis_scatterplot.js",
   "files": [
     "src",
@@ -31,6 +48,10 @@
     "predist": "npm run build",
     "dist": "mkdirp dist && cd build && tar cvzf ../dist/phovea_vis_scatterplot.tar.gz *"
   },
+  "dependencies": {
+    "phovea_core": "github:phovea/phovea_core#develop",
+    "datavisyn-scatterplot": "github:datavisyn/datavisyn-scatterplot"
+  },
   "devDependencies": {
     "@types/jasmine": "2.5.35",
     "awesome-typescript-loader": "2.2.4",
@@ -61,26 +82,5 @@
     "url-loader": "0.5.7",
     "webpack": "2.1.0-beta.26",
     "webpack-dev-server": "2.1.0-beta.10"
-  },
-  "dependencies": {
-    "phovea_core": "github:phovea/phovea_core#develop",
-    "datavisyn-scatterplot": "github:datavisyn/datavisyn-scatterplot"
-  },
-  "name": "phovea_vis_scatterplot",
-  "description": "phovea datavisyn-scatterplot binding",
-  "homepage": "https://phovea.caleydo.org",
-  "version": "0.1.0-SNAPSHOT",
-  "author": {
-    "name": "Samuel Gratzl",
-    "email": "samuel_gratzl@gmx.at",
-    "url": ""
-  },
-  "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/datavisyn/phovea_vis_scatterplot/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/datavisyn/phovea_vis_scatterplot.git"
   }
 }
