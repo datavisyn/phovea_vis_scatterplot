@@ -49,7 +49,7 @@
     "dist": "mkdirp dist && cd build && tar cvzf ../dist/phovea_vis_scatterplot.tar.gz *"
   },
   "dependencies": {
-    "phovea_core": "github:phovea/phovea_core#develop",
+    "phovea_core": "github:phovea/phovea_core#feature_update_dependencies",
     "datavisyn-scatterplot": "github:datavisyn/datavisyn-scatterplot"
   },
   "devDependencies": {
