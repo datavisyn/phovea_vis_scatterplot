@@ -56,8 +56,7 @@ export default class ScatterPlot extends AVisInstance implements IVisInstance {
       xscale: scale.scaleLinear().domain(value.range),
       y: (row) => row[1],
       ylabel: cols[1],
-      yscale: scale.scaleLinear().domain(value.range),
-      onSelectionChanged: this.onSelectionChanged.bind(this)
+      yscale: scale.scaleLinear().domain(value.range)
     };
     return mixin(base, options);
   }
@@ -93,6 +92,7 @@ export default class ScatterPlot extends AVisInstance implements IVisInstance {
     Promise.all<any[]>([data.data(selectedColumns), data.cols(new Range([selectedColumns.dim(1)]))]).then(([rows, cols]: [[number, number][], string[]]) => {
       this.loaded = rows;
       this.impl = new Impl(rows, node, this.createImplOptions(options, cols));
+      this.impl.on(Impl.EVENT_SELECTION_CHANGED, this.onSelectionChanged.bind(this));
 
       data.selections().then((selected: Range) => {
         this.onDataSelectionChanged(null, selected);
